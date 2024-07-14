@@ -90,20 +90,20 @@ class F1(TypedDict):
     c: ReadOnly[Required[int]]
 
 
-class F3(F1):
-    a: ReadOnly[int]  # E
+class F3(F1):  # E[F3.a]
+    a: ReadOnly[int]  # E[F3.a]
 
 
-class F4(F1):
-    a: NotRequired[int]  # E
+class F4(F1):  # E[F4.a]
+    a: NotRequired[int]  # E[F4.a]
 
 
 class F5(F1):
     b: ReadOnly[Required[int]]  # OK
 
 
-class F6(F1):
-    c: ReadOnly[NotRequired[int]]  # E
+class F6(F1):  # E[F6.c]
+    c: ReadOnly[NotRequired[int]]  # E[F6.c]
 
 
 class TD_A1(TypedDict):
